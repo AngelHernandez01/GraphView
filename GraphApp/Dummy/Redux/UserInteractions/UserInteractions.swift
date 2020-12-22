@@ -57,38 +57,36 @@ public struct UserInteractions {
   public func setTappableItemModeAvailable() {
     func makeEvents() -> ([EventItem], [AlertItem]) {
       let event = EventItem(eventType: .maximumBasal)
-      let alert = AlertItem(time: "2:25 PM", description: "Insulin Max Reached", belongTo: event.identifier)
-      
+      let alert = AlertItem(time: "9:45 AM", description: "Insulin Max Reached", belongTo: event.identifier)
       
       let event2 = EventItem(eventType: .pausedInsulin)
-      let secondAlert = AlertItem(time: "2:25 PM", description: "Last Bolus", belongTo: event2.identifier)
-      let thirdAlert = AlertItem(time: "2:25 PM", description: "Last Bolus", belongTo: event2.identifier)
+      let secondAlert = AlertItem(time: "10:50 AM", description: "Insulin Paused", belongTo: event2.identifier)
       
-      return ([event, event2], [alert, secondAlert, thirdAlert])
+      return ([event, event2], [alert, secondAlert])
     }
 
     func makeAreas() -> ([AreaItem], [AlertItem]) {
-      let area = AreaItem(eventAreaType: .progress, originX: 0, width: 150)
-      let alert = AlertItem(time: "2:25 PM", description: "Automated Limited", belongTo: area.identifier)
+        let area = AreaItem(eventAreaType: .limited, originX: 0, width: 150)
+      let alert = AlertItem(time: "8:30 - 9:30 AM", description: "Automated Limited", belongTo: area.identifier)
       
-      let secondArea = AreaItem(eventAreaType: .limited, originX: 90, width: 300)
-      let secondAlert = AlertItem(time: "2:25 PM", description: "Automated Limited", belongTo: secondArea.identifier)
+      let secondArea = AreaItem(eventAreaType: .manual, originX: 90, width: 300)
+      let secondAlert = AlertItem(time: "9:30 - 11:10 AM", description: "Manual Mode", belongTo: secondArea.identifier)
       
-      let thirdArea = AreaItem(eventAreaType: .manual, originX: 180, width: 200)
-      let thirdAlert = AlertItem(time: "2:25 PM", description: "Automated Limited", belongTo: thirdArea.identifier)
+      let thirdArea = AreaItem(eventAreaType: .automated, originX: 180, width: 200)
+      let thirdAlert = AlertItem(time: "11:10 - 11:30 AM", description: "Automated Mode", belongTo: thirdArea.identifier)
       
       return ([area, secondArea, thirdArea], [alert, secondAlert, thirdAlert])
     }
 
     func makeIcons() -> ([IconItem], [AlertItem]) {
-      let iconItem = IconItem(type: .bolus, badge: .check)
-      let alert = AlertItem(isIcon: true, time: "2:25 PM", description: "Bolus:\n 2.25 Units", belongTo: iconItem.identifier)
+      let iconItem = IconItem(type: .bolus, badge: .double)
+      let alert = AlertItem(isIcon: true, time: "9:50 AM", description: "Bolus:\n 2.15 Units", belongTo: iconItem.identifier)
+        let secondAlert = AlertItem(isIcon: true, time: "10:05 AM", description: "Bolus:\n 3.4 Units", belongTo: iconItem.identifier)
       
-      let SiconItem = IconItem(type: .pod, badge: .double)
-      let Salert = AlertItem(isIcon: true, time: "2:25 PM", description: "Bolus:\n 2.25 Units", belongTo: SiconItem.identifier)
-      let SsecondAlert = AlertItem(isIcon: true, time: "2:25 PM", description: "Bolus:\n 2.25 Units", belongTo: SiconItem.identifier)
+      let SiconItem = IconItem(type: .pod, badge: .check)
+      let Salert = AlertItem(isIcon: true, time: "10:54 AM", description: "Pod changed", belongTo: SiconItem.identifier)
       
-      return ([iconItem, SiconItem], [alert, Salert, SsecondAlert])
+      return ([iconItem, SiconItem], [alert, secondAlert, Salert])
     }
 
     let events = makeEvents()

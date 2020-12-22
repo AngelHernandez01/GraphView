@@ -13,7 +13,7 @@ private let graphValues = ValueGenerator
     .generateOrderedIntValues(
         bottomLimit: 70,
         topLimit: 350,
-        numberOfItems: 100
+        numberOfItems: 150
 )
 
 struct MainView: View {
@@ -62,8 +62,8 @@ struct MainView: View {
                     }
                 }
             }
+            .navigationTitle(Text("Automated"))
         }
-        .navigationTitle(Text("Manual"))
     }
 }
 

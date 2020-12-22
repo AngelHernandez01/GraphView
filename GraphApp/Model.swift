@@ -10,7 +10,6 @@ import SwiftUI
 
 class Model: ObservableObject {
     @Published var landscape: Bool = false
-    private var lastState: GraphState?
     private let disposeBag = DisposeBag()
     
     init(isLandscape: Bool) {
